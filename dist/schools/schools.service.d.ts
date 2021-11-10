@@ -7,4 +7,7 @@ export declare class SchoolsService {
     insertSchool(name: string, grade: number): Promise<import("mongoose").Document<any, any, School> & School & {
         _id: import("mongoose").Types.ObjectId;
     }>;
+    getSchools(): Promise<(import("mongoose").Document<any, any, School> & School & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
 }

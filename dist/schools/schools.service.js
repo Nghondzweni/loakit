@@ -26,6 +26,9 @@ let SchoolsService = class SchoolsService {
         const newSchool = new this.schoolModel({ name, grade });
         return (await newSchool.save());
     }
+    async getSchools() {
+        return (await this.schoolModel.find());
+    }
 };
 SchoolsService = __decorate([
     (0, common_1.Injectable)(),

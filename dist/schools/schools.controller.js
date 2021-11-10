@@ -23,6 +23,9 @@ let SchoolsController = class SchoolsController {
         const generatedId = await this.schoolsService.insertSchool(name, grade);
         return { id: generatedId };
     }
+    async getSchools() {
+        return (await this.schoolsService.getSchools());
+    }
 };
 __decorate([
     (0, common_1.Post)(),
@@ -32,6 +35,12 @@ __decorate([
     __metadata("design:paramtypes", [String, Number]),
     __metadata("design:returntype", Promise)
 ], SchoolsController.prototype, "addSchool", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], SchoolsController.prototype, "getSchools", null);
 SchoolsController = __decorate([
     (0, common_1.Controller)('schools'),
     __metadata("design:paramtypes", [schools_service_1.SchoolsService])

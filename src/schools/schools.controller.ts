@@ -7,6 +7,7 @@ import {
   Patch,
   Delete,
 } from '@nestjs/common';
+import { get } from 'http';
 
 import { SchoolsService } from './schools.service';
 
@@ -24,6 +25,11 @@ export class SchoolsController {
           grade
       );
       return{id: generatedId};
+  }
+
+  @Get()
+  async getSchools() {
+      return(await this.schoolsService.getSchools());
   }
 }
 

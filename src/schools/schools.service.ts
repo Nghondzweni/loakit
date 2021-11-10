@@ -17,4 +17,8 @@ export class SchoolsService {
       return (await newSchool.save());
       
   }
+
+  async getSchools() {
+      return (await this.schoolModel.find());
+  }
 }
