@@ -6,8 +6,8 @@ import {
   Param,
   Patch,
   Delete,
+  Put,
 } from '@nestjs/common';
-import { get } from 'http';
 
 import { SchoolsService } from './schools.service';
 
@@ -16,21 +16,26 @@ export class SchoolsController {
   constructor(private readonly schoolsService: SchoolsService) {}
 
   @Post()
-  async addSchool (
-      @Body('name') name: string,
-      @Body('grade') grade: number,
-  ) {
-      const generatedId = await this.schoolsService.insertSchool(
-          name,
-          grade
-      );
-      return{id: generatedId};
+  async addSchool(@Body('name') name: string, @Body('grade') grade: number) {
+    return await this.schoolsService.addSchool(name, grade);
   }
 
   @Get()
   async getSchools() {
-      return(await this.schoolsService.getSchools());
+    return await this.schoolsService.getSchools();
+  }
+
+  @Put()
+  async editSchool(
+    @Body('_id') _id: string,
+    @Body('name') name: string,
+    @Body('grade') grade: number,
+  ) {
+    return await this.schoolsService.editSchool(_id, name, grade);
+  }
+
+  @Delete()
+  async deleteSchool(@Body('_id') _id: string) {
+    return await this.schoolsService.deleteSchool(_id);
   }
 }
-
-

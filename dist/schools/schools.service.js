@@ -19,15 +19,25 @@ const mongoose_2 = require("mongoose");
 let SchoolsService = class SchoolsService {
     constructor(schoolModel) {
         this.schoolModel = schoolModel;
-        this.schools = [];
     }
-    async insertSchool(name, grade) {
-        const schoolId = Math.random().toString();
+    async addSchool(name, grade) {
         const newSchool = new this.schoolModel({ name, grade });
-        return (await newSchool.save());
+        return await newSchool.save();
     }
     async getSchools() {
-        return (await this.schoolModel.find());
+        return await this.schoolModel.find();
+    }
+    async editSchool(_id, name, grade) {
+        const updatedSchool = {
+            name: name,
+            grade: grade,
+        };
+        return await this.schoolModel.findByIdAndUpdate(_id, updatedSchool, {
+            new: true,
+        });
+    }
+    async deleteSchool(_id) {
+        return await this.schoolModel.findByIdAndRemove(_id);
     }
 };
 SchoolsService = __decorate([

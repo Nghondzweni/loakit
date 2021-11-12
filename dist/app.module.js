@@ -12,11 +12,16 @@ const mongoose_1 = require("@nestjs/mongoose");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const schools_module_1 = require("./schools/schools.module");
+const learners_module_1 = require("./learners/learners.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [schools_module_1.SchoolsModule, mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/loakit')],
+        imports: [
+            schools_module_1.SchoolsModule,
+            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/loakit'),
+            learners_module_1.LearnersModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

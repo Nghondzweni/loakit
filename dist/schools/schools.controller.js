@@ -20,11 +20,16 @@ let SchoolsController = class SchoolsController {
         this.schoolsService = schoolsService;
     }
     async addSchool(name, grade) {
-        const generatedId = await this.schoolsService.insertSchool(name, grade);
-        return { id: generatedId };
+        return await this.schoolsService.addSchool(name, grade);
     }
     async getSchools() {
-        return (await this.schoolsService.getSchools());
+        return await this.schoolsService.getSchools();
+    }
+    async editSchool(_id, name, grade) {
+        return await this.schoolsService.editSchool(_id, name, grade);
+    }
+    async deleteSchool(_id) {
+        return await this.schoolsService.deleteSchool(_id);
     }
 };
 __decorate([
@@ -41,6 +46,22 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], SchoolsController.prototype, "getSchools", null);
+__decorate([
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)('_id')),
+    __param(1, (0, common_1.Body)('name')),
+    __param(2, (0, common_1.Body)('grade')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Number]),
+    __metadata("design:returntype", Promise)
+], SchoolsController.prototype, "editSchool", null);
+__decorate([
+    (0, common_1.Delete)(),
+    __param(0, (0, common_1.Body)('_id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], SchoolsController.prototype, "deleteSchool", null);
 SchoolsController = __decorate([
     (0, common_1.Controller)('schools'),
     __metadata("design:paramtypes", [schools_service_1.SchoolsService])

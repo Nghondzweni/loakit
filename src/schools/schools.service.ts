@@ -5,20 +5,30 @@ import { School } from './models/school.model';
 
 @Injectable()
 export class SchoolsService {
-  private schools: School[] = [];
-
   constructor(
     @InjectModel('School') private readonly schoolModel: Model<School>,
   ) {}
 
-  async insertSchool(name: string, grade: number) {
-      const schoolId = Math.random().toString();
-      const newSchool = new this.schoolModel({name, grade});
-      return (await newSchool.save());
-      
+  async addSchool(name: string, grade: number) {
+    const newSchool = new this.schoolModel({ name, grade });
+    return await newSchool.save();
   }
 
   async getSchools() {
-      return (await this.schoolModel.find());
+    return await this.schoolModel.find();
+  }
+
+  async editSchool(_id: string, name: string, grade: number) {
+    const updatedSchool = {
+      name: name,
+      grade: grade,
+    };
+    return await this.schoolModel.findByIdAndUpdate(_id, updatedSchool, {
+      new: true,
+    });
+  }
+
+  async deleteSchool(_id: string) {
+    return await this.schoolModel.findByIdAndRemove(_id);
   }
 }
