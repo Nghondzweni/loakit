@@ -23,24 +23,26 @@ export class LearnersController {
     @Body('grade') grade: number,
     @Body('code') code: number,
     @Body('schoolId') schoolId: string,
+    @Body('interests') interests: [string],
   ) {
     return await this.learnersService.addLearner(
-        name,
-        surname,
-        age,
-        grade,
-        code,
-        schoolId
+      name,
+      surname,
+      age,
+      grade,
+      code,
+      schoolId,
+      interests,
     );
   }
 
   @Get()
-  async getlearners() {
+  async getLearners() {
     return await this.learnersService.getLearners();
   }
 
   @Put()
-  async editlearner(
+  async editLearner(
     @Body('_id') _id: string,
     @Body('name') name: string,
     @Body('surname') surname: string,
@@ -48,20 +50,22 @@ export class LearnersController {
     @Body('grade') grade: number,
     @Body('code') code: number,
     @Body('schoolId') schoolId: string,
+    @Body('interests') interests: [string],
   ) {
     return await this.learnersService.editLearner(
-        _id,
-        name,
-        surname,
-        age,
-        grade,
-        code,
-        schoolId
-        );
+      _id,
+      name,
+      surname,
+      age,
+      grade,
+      code,
+      schoolId,
+      interests,
+    );
   }
 
   @Delete()
-  async deletelearner(@Body('_id') _id: string) {
+  async deleteLearner(@Body('_id') _id: string) {
     return await this.learnersService.deleteLearner(_id);
   }
 }

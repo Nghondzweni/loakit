@@ -13,6 +13,9 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const schools_module_1 = require("./schools/schools.module");
 const learners_module_1 = require("./learners/learners.module");
+const teachers_module_1 = require("./teachers/teachers.module");
+const interests_module_1 = require("./interests/interests.module");
+const rewards_module_1 = require("./rewards/rewards.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -21,6 +24,9 @@ AppModule = __decorate([
             schools_module_1.SchoolsModule,
             mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/loakit'),
             learners_module_1.LearnersModule,
+            teachers_module_1.TeachersModule,
+            interests_module_1.InterestsModule,
+            rewards_module_1.RewardsModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

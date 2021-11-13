@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-import { LearnerSchema } from 'src/learners/models/learner.model';
 
 export const SchoolSchema = new mongoose.Schema({
   name: {

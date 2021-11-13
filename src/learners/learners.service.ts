@@ -16,6 +16,7 @@ export class LearnersService {
     grade: number,
     code: number,
     schoolId: string,
+    interests: [string],
   ) {
     const newLearner = new this.learnerModel({
       name,
@@ -24,6 +25,7 @@ export class LearnersService {
       grade,
       code,
       schoolId,
+      interests
     });
     return await newLearner.save();
   }
@@ -40,6 +42,7 @@ export class LearnersService {
     grade: number,
     code: number,
     schoolId: string,
+    interests: [string],
   ) {
     const updatedLearner = {
       name,
@@ -48,6 +51,7 @@ export class LearnersService {
       grade,
       code,
       schoolId,
+      interests
     };
 
     return await this.learnerModel.findByIdAndUpdate(_id, updatedLearner, {

@@ -26,6 +26,9 @@ export const LearnerSchema = new mongoose.Schema({
   schoolId: {
       type: String,
       required: true
+  },
+  interests: {
+    type: [String],
   }
 });
 
@@ -36,4 +39,5 @@ export interface Learner {
     grade: number;
     code: number;
     schoolId: string;
+    interests: [string];
 }
